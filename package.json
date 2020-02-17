@@ -2,8 +2,9 @@
   "name": "@ebsolutions/git-my-files",
   "version": "0.1.0",
   "description": "Retrieves all file paths and their status from the git status log",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "npx babel src --out-dir dist",
     "lint": "eslint \"./**/*.js\""
   },
   "engines": {
@@ -12,6 +13,11 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-transform-arrow-functions": "^7.8.3",
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.4.0",
@@ -21,5 +27,20 @@
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
     "typescript": "^3.7.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronsisler/packages.git-my-files.git"
+  },
+  "keywords": [
+    "git",
+    "changed",
+    "files"
+  ],
+  "author": "Aaron Sisler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronsisler/packages.git-my-files/issues"
+  },
+  "homepage": "https://github.com/aaronsisler/packages.git-my-files#readme"
 }
