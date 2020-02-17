@@ -1,0 +1,14 @@
+# dependencies
+node_modules/
+.vscode/
+
+# Build files
+
+# secrets
+secrets.json
+
+# local error files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+sh.exe.stackdump

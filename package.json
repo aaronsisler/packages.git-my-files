@@ -1,0 +1,25 @@
+{
+  "name": "@ebsolutions/git-my-files",
+  "version": "0.1.0",
+  "description": "Retrieves all file paths and their status from the git status log",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "eslint \"./**/*.js\""
+  },
+  "engines": {
+    "node": ">=12.0.0",
+    "yarn": ">=1.18.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2",
+    "typescript": "^3.7.5"
+  }
+}
