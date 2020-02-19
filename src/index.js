@@ -1,3 +1,5 @@
 const fetchGitFiles = require("./fetch-git-files");
 
-module.exports = fetchGitFiles;
+const baseMethod = (folderPath = "") => fetchGitFiles(folderPath);
+
+module.exports = baseMethod;

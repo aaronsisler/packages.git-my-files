@@ -18,8 +18,8 @@ const findError = error => {
   return errorMessage;
 };
 
-const findFiles = () => {
-  const baseCmd = "git status --short --column";
+const findFiles = folderPath => {
+  const baseCmd = `git status --short --column ${folderPath}`;
   const [bin, ...args] = baseCmd.split(" ");
   const changedFiles = spawnSync(bin, args);
   let error = "";
@@ -36,12 +36,12 @@ const findFiles = () => {
   return files;
 };
 
-const fetchGitFiles = () =>
+const fetchGitFiles = folderPath =>
   new Promise((resolve, reject) => {
     try {
       revertStaging();
 
-      let files = findFiles();
+      let files = findFiles(folderPath);
       files = formatOutput(files);
       resolve(files);
     } catch (err) {
