@@ -1,5 +1,5 @@
 const { spawnSync } = require("child_process");
-const formatOutput = require("./format-output");
+const formatOutput = require("../format-output");
 
 const revertStaging = () => {
   const revertStagingCommand = "git restore --staged .";

@@ -1,4 +1,4 @@
-const grabLooseFiles = require("./grab-loose-files");
+const grabLooseFiles = require("../grab-loose-files");
 
 const formatOutput = files => {
   let formattedOutput = [];

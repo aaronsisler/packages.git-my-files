@@ -5,6 +5,9 @@ node_modules/
 # Build files
 dist/
 
+# Testing
+coverage/
+
 # secrets
 secrets.json
 .npmrc
