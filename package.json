@@ -1,6 +1,6 @@
 {
   "name": "@ebsolutions/git-my-files",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Retrieves all file paths and their status from the git status log",
   "main": "dist/index.js",
   "scripts": {
