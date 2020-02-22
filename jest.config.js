@@ -4,7 +4,10 @@
 module.exports = {
   // Indicates whether the coverage information should be collected while executing the test
   collectCoverage: true,
-  collectCoverageFrom: ["<rootDir>/src/**/*.js", "!<rootDir>/src/**/index.js"],
+  collectCoverageFrom: [
+    "<rootDir>/src/**/*.js",
+    "!<rootDir>/src/**/*/index.js"
+  ],
   // The directory where Jest should output its coverage files
   coverageDirectory: "coverage",
   coveragePathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/dist/"],
