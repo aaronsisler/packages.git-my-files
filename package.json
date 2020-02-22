@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx babel src --out-dir dist",
     "lint": "eslint \"./**/*.js\"",
-    "test": "jest",
+    "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
   "engines": {

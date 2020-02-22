@@ -20,6 +20,7 @@ describe("throwError()", () => {
       expect(returnedErrorMessage).toEqual("Not a git repository");
     });
   });
+
   describe("when error does NOT include the git repository message", () => {
     it("should return the correct message", () => {
       expect(returnedErrorMessage).toEqual("generic-error");

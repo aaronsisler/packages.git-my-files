@@ -1,13 +1,5 @@
 const { spawnSync } = require("child_process");
-const formatOutput = require("../format-output");
 const throwError = require("../throw-error");
-
-const revertStaging = () => {
-  const revertStagingCommand = "git restore --staged .";
-  const [bin, ...args] = revertStagingCommand.split(" ");
-
-  spawnSync(bin, args);
-};
 
 const findFiles = folderPath => {
   const baseCmd = `git status --short --column ${folderPath}`;
@@ -25,17 +17,4 @@ const findFiles = folderPath => {
   return files;
 };
 
-const fetchGitFiles = folderPath =>
-  new Promise((resolve, reject) => {
-    try {
-      revertStaging();
-
-      let files = findFiles(folderPath);
-      files = formatOutput(files);
-      resolve(files);
-    } catch (err) {
-      reject(err);
-    }
-  });
-
-module.exports = fetchGitFiles;
+module.exports = findFiles;
