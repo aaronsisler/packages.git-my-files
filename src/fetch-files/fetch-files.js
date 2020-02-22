@@ -2,17 +2,17 @@ import revertStaging from "../utils/revert-staging";
 import findFiles from "../find-files";
 import formatOutput from "../format-output";
 
-const fetchFiles = folderPath =>
-  new Promise((resolve, reject) => {
-    try {
-      revertStaging();
+const fetchFiles = folderPath => {
+  try {
+    revertStaging();
+    let files = findFiles(folderPath);
+    files = formatOutput(files);
 
-      let files = findFiles(folderPath);
-      files = formatOutput(files);
-      resolve(files);
-    } catch (err) {
-      reject(err);
-    }
-  });
+    return files;
+  } catch (error) {
+    console.log(error.message); // eslint-disable-line no-console
+    return [];
+  }
+};
 
 export default fetchFiles;

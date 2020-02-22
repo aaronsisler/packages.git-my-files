@@ -8,7 +8,6 @@ jest.mock("../find-files");
 jest.mock("../format-output");
 
 describe("fetchFiles()", () => {
-  let returnedFiles;
   const mockFindFiles = [
     "A mock-folder-path/file1.ext",
     "M mock-folder-path/file2.ext"
@@ -22,38 +21,50 @@ describe("fetchFiles()", () => {
   beforeEach(() => {
     findFiles.mockReturnValue(mockFindFiles);
     formatOutput.mockReturnValue(mockFormatOutput);
-  });
-
-  it("should have a return type of Promise", () => {
-    returnedFiles = fetchFiles("mock-folder-path");
-
-    expect(typeof returnedFiles).toEqual("object");
-    expect(typeof returnedFiles.then).toEqual("function");
+    fetchFiles("mock-folder-path");
   });
 
   it("should call revert staging", () => {
-    returnedFiles = fetchFiles("mock-folder-path");
-
     expect(revertStaging).toHaveBeenCalled();
   });
 
   it("should call find files with the correct folder path", () => {
-    returnedFiles = fetchFiles("mock-folder-path");
-
     expect(findFiles).toHaveBeenCalledWith("mock-folder-path");
   });
 
   it("should call format output with the correct files", () => {
-    returnedFiles = fetchFiles("mock-folder-path");
-
     expect(formatOutput).toHaveBeenCalledWith(mockFindFiles);
   });
 
   describe("when NO error is thrown", () => {
-    it("should resolve the promise correctly", () => {});
+    it("should return the correct files", () => {});
   });
 
   describe("when error is thrown", () => {
-    it("should reject the promise correctly", () => {});
+    const originalLog = console.log; // eslint-disable-line no-console
+    let files;
+    let consoleLog;
+
+    beforeEach(() => {
+      consoleLog = jest.fn();
+      console.log = consoleLog; // eslint-disable-line no-console
+      revertStaging.mockImplementation(() => {
+        throw new Error("mock error");
+      });
+
+      files = fetchFiles("mock-folder-path");
+    });
+
+    afterEach(() => {
+      console.log = originalLog; // eslint-disable-line no-console
+    });
+
+    it("should log an error to the console", () => {
+      expect(consoleLog).toHaveBeenCalledWith("mock error");
+    });
+
+    it("should return an empty array", () => {
+      expect(files).toEqual([]);
+    });
   });
 });
