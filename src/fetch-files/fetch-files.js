@@ -5,7 +5,6 @@ import formatOutput from "../format-output";
 const fetchFiles = folderPath =>
   new Promise((resolve, reject) => {
     try {
-      console.log(revertStaging);
       revertStaging();
 
       let files = findFiles(folderPath);
