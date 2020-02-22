@@ -1,5 +1,5 @@
-const { spawnSync } = require("child_process");
-const throwError = require("../utils/throw-error");
+import { spawnSync } from "child_process";
+import throwError from "../utils/throw-error";
 
 const findFiles = folderPath => {
   const baseCmd = `git status --short --column ${folderPath}`;
@@ -17,4 +17,4 @@ const findFiles = folderPath => {
   return files;
 };
 
-module.exports = findFiles;
+export default findFiles;

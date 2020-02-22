@@ -1,4 +1,4 @@
-const throwError = require("./throw-error");
+import throwError from "./throw-error";
 
 describe("throwError()", () => {
   let returnedErrorMessage;

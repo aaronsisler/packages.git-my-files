@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from "fs";
 
 const grabLooseFiles = folderPath => {
   const looseFiles = [];
@@ -19,4 +19,4 @@ const grabLooseFiles = folderPath => {
   return looseFiles;
 };
 
-module.exports = grabLooseFiles;
+export default grabLooseFiles;

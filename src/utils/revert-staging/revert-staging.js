@@ -1,4 +1,4 @@
-const { spawnSync } = require("child_process");
+import { spawnSync } from "child_process";
 
 const revertStaging = () => {
   const revertStagingCommand = "git restore --staged .";
@@ -7,4 +7,4 @@ const revertStaging = () => {
   spawnSync(bin, args);
 };
 
-module.exports = revertStaging;
+export default revertStaging;

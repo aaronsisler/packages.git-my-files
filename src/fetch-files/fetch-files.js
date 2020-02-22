@@ -1,10 +1,11 @@
-const revertStaging = require("../utils/revert-staging");
-const findFiles = require("../find-files");
-const formatOutput = require("../format-output");
+import revertStaging from "../utils/revert-staging";
+import findFiles from "../find-files";
+import formatOutput from "../format-output";
 
 const fetchFiles = folderPath =>
   new Promise((resolve, reject) => {
     try {
+      console.log(revertStaging);
       revertStaging();
 
       let files = findFiles(folderPath);
@@ -15,4 +16,4 @@ const fetchFiles = folderPath =>
     }
   });
 
-module.exports = fetchFiles;
+export default fetchFiles;

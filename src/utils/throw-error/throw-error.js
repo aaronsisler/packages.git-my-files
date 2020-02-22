@@ -8,4 +8,4 @@ const throwError = error => {
   return errorMessage;
 };
 
-module.exports = throwError;
+export default throwError;

@@ -1,5 +1,5 @@
-const fs = require("fs");
-const grabLooseFiles = require("./grab-loose-files");
+import fs from "fs";
+import grabLooseFiles from "./grab-loose-files";
 
 jest.mock("fs");
 

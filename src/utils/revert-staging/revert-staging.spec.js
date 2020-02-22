@@ -1,5 +1,5 @@
-const { spawnSync } = require("child_process");
-const revertStaging = require("./revert-staging");
+import { spawnSync } from "child_process";
+import revertStaging from "./revert-staging";
 
 jest.mock("child_process");
 
