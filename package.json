@@ -1,8 +1,11 @@
 {
   "name": "@ebsolutions/git-my-files",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Retrieves all file paths and their status from the git status log",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prebuild": "rm -rf ./dist",
     "build": "npx babel src --out-dir dist",
