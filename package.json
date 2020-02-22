@@ -1,9 +1,10 @@
 {
   "name": "@ebsolutions/git-my-files",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Retrieves all file paths and their status from the git status log",
   "main": "dist/index.js",
   "scripts": {
+    "prebuild": "rm -rf ./dist",
     "build": "npx babel src --out-dir dist",
     "lint": "eslint \"./**/*.js\"",
     "test": "jest --coverage",
@@ -37,9 +38,9 @@
     "url": "git+https://github.com/aaronsisler/packages.git-my-files.git"
   },
   "keywords": [
-    "git",
-    "changed",
-    "files"
+    "git changed files",
+    "git status",
+    "git diff"
   ],
   "author": "Aaron Sisler",
   "license": "ISC",
