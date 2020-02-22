@@ -4,7 +4,9 @@
 module.exports = {
   // Indicates whether the coverage information should be collected while executing the test
   collectCoverage: true,
-  collectCoverageFrom: ["src/**/*.{js}"],
+  verbose: true,
+  collectCoverageFrom: ["<rootDir>/src/**/*.js", "!<rootDir>/src/**/index.js"],
+  coveragePathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/dist/"],
   transform: {
     "^.+\\.js$": "babel-jest"
   },
@@ -12,17 +14,14 @@ module.exports = {
   // The directory where Jest should output its coverage files
   coverageDirectory: "coverage",
 
-  // An array of regexp pattern strings used to skip coverage collection
-  coveragePathIgnorePatterns: ["/node_modules/"],
-
   // A list of reporter names that Jest uses when writing coverage reports
-  coverageReporters: ["lcov"],
+  coverageReporters: ["text", "lcov", "json", "html"],
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  moduleDirectories: ["node_modules"],
+  moduleDirectories: ["node_modules", "src"],
 
   // The test environment that will be used for testing
   testEnvironment: "node",
