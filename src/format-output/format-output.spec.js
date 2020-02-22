@@ -1,7 +1,6 @@
 import * as grabLooseFiles from "../grab-loose-files";
 
 const formatOutput = require("./format-output");
-// const grabLooseFiles = require("../grab-loose-files");
 
 jest.mock("../grab-loose-files");
 
