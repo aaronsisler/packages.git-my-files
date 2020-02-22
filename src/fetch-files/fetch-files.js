@@ -1,4 +1,4 @@
-const revertStaging = require("../revert-staging");
+const revertStaging = require("../utils/revert-staging");
 const findFiles = require("../find-files");
 const formatOutput = require("../format-output");
 

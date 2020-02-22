@@ -1,5 +1,5 @@
 const { spawnSync } = require("child_process");
-const throwError = require("../throw-error");
+const throwError = require("../utils/throw-error");
 
 const findFiles = folderPath => {
   const baseCmd = `git status --short --column ${folderPath}`;
