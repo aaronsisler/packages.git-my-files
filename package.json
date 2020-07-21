@@ -10,7 +10,7 @@
     "prebuild": "rm -rf ./dist",
     "build": "npx babel src --out-dir dist",
     "lint": "eslint \"./**/*.js\"",
-    "test": "jest --coverage",
+    "test": "jest",
     "test:watch": "jest --watch"
   },
   "engines": {
