@@ -8,6 +8,7 @@ module.exports = {
     "<rootDir>/src/**/*.js",
     "!<rootDir>/src/**/*/index.js"
   ],
+
   // The directory where Jest should output its coverage files
   coverageDirectory: "coverage",
   coveragePathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/dist/"],
@@ -16,7 +17,14 @@ module.exports = {
   coverageReporters: ["lcov", "text", "html"],
 
   // An object that configures minimum threshold enforcement for coverage results
-  // coverageThreshold: undefined,
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100
+    }
+  },
 
   // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: ["node_modules", "src"],
@@ -25,15 +33,9 @@ module.exports = {
   testEnvironment: "node",
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ["**/?(*.)+(spec).[tj]s?(x)"],
+  testMatch: ["**/?(*.)+(spec).js"],
 
   // An array of regexp pattern strings that are matched against all test paths
-  // matched tests are skipped
-  testPathIgnorePatterns: ["/node_modules/", "/dist/"],
-
-  // The regexp pattern or array of patterns that Jest uses to detect test files
-  // testRegex: [],
-  transform: {
-    "^.+\\.js$": "babel-jest"
-  }
+  // Matched tests are skipped
+  testPathIgnorePatterns: ["/node_modules/", "/dist/"]
 };
