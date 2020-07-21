@@ -8,6 +8,7 @@ module.exports = {
     "<rootDir>/src/**/*.js",
     "!<rootDir>/src/**/*/index.js"
   ],
+
   // The directory where Jest should output its coverage files
   coverageDirectory: "coverage",
   coveragePathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/dist/"],
@@ -35,6 +36,6 @@ module.exports = {
   testMatch: ["**/?(*.)+(spec).js"],
 
   // An array of regexp pattern strings that are matched against all test paths
-  // matched tests are skipped
+  // Matched tests are skipped
   testPathIgnorePatterns: ["/node_modules/", "/dist/"]
 };
