@@ -41,13 +41,15 @@ describe("fetchFiles()", () => {
   });
 
   describe("when error is thrown", () => {
-    const originalLog = console.log; // eslint-disable-line no-console
+    let originalLog;
     let files;
     let consoleLog;
 
     beforeEach(() => {
+      originalLog = console.log; // eslint-disable-line no-console
       consoleLog = jest.fn();
       console.log = consoleLog; // eslint-disable-line no-console
+
       revertStaging.mockImplementation(() => {
         throw new Error("mock error");
       });

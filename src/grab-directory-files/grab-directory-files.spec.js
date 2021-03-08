@@ -1,12 +1,18 @@
 import fs from "fs";
-import grabLooseFiles from "./grab-loose-files";
+import grabDirectoryFiles from "./grab-directory-files";
+import isDirectory from "../utils/is-directory";
 
 jest.mock("fs");
+jest.mock("../utils/is-directory");
 
 describe("grabLooseFiles()", () => {
+  beforeEach(() => {
+    isDirectory.mockReturnValue(false);
+  });
+
   describe("when folder path ends with a trailing slash", () => {
     it("should read directory with correct folder path", () => {
-      grabLooseFiles("real-folder-path/");
+      grabDirectoryFiles("real-folder-path/");
 
       expect(fs.readdirSync).toHaveBeenCalledWith("real-folder-path");
     });
@@ -14,9 +20,36 @@ describe("grabLooseFiles()", () => {
 
   describe("when folder path DOES NOT end with a trailing slash", () => {
     it("should read directory with correct folder path", () => {
-      grabLooseFiles("real-folder-path");
+      grabDirectoryFiles("real-folder-path");
 
       expect(fs.readdirSync).toHaveBeenCalledWith("real-folder-path");
+    });
+  });
+
+  describe("when a directory path is provided", () => {
+    beforeEach(() => {
+      isDirectory.mockImplementation(path => {
+        if (path === "real-folder-path/mock-directory") {
+          return true;
+        }
+        return false;
+      });
+
+      fs.readdirSync
+        .mockReturnValueOnce(["mock-directory", "file1.ext"])
+        .mockReturnValueOnce(["file2.ext", "file3.ext"]);
+    });
+
+    it("should return the expected result", () => {
+      const expectedResult = [
+        { filename: "real-folder-path/mock-directory/file2.ext", status: "A" },
+        { filename: "real-folder-path/mock-directory/file3.ext", status: "A" },
+        { filename: "real-folder-path/file1.ext", status: "A" }
+      ];
+
+      const files = grabDirectoryFiles("real-folder-path/");
+
+      expect(files).toEqual(expectedResult);
     });
   });
 
@@ -30,7 +63,7 @@ describe("grabLooseFiles()", () => {
         { filename: "real-folder-path/file1.ext", status: "A" },
         { filename: "real-folder-path/file2.ext", status: "A" }
       ];
-      const files = grabLooseFiles("real-folder-path/");
+      const files = grabDirectoryFiles("real-folder-path/");
 
       expect(files).toEqual(expectedResult);
     });
@@ -44,7 +77,7 @@ describe("grabLooseFiles()", () => {
     });
 
     it("should return an empty array", () => {
-      const files = grabLooseFiles("fake-folder-path");
+      const files = grabDirectoryFiles("fake-folder-path");
 
       expect(files).toEqual([]);
     });
