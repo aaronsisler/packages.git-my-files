@@ -1,7 +1,7 @@
 import formatOutput from "./format-output";
-import grabLooseFiles from "../grab-loose-files";
+import grabDirectoryFiles from "../grab-directory-files";
 
-jest.mock("../grab-loose-files");
+jest.mock("../grab-directory-files");
 
 describe("formatOutput()", () => {
   describe("when a valid input is provided", () => {
@@ -10,7 +10,7 @@ describe("formatOutput()", () => {
         let files;
 
         beforeEach(() => {
-          grabLooseFiles.mockReturnValue([
+          grabDirectoryFiles.mockReturnValue([
             { status: "A", filename: "mock-folder-path/file1.ext" },
             { status: "A", filename: "mock-folder-path/file2.ext" }
           ]);
@@ -18,7 +18,7 @@ describe("formatOutput()", () => {
         });
 
         it("should call the correct helper function", () => {
-          expect(grabLooseFiles).toHaveBeenCalledWith("mock-folder-path/");
+          expect(grabDirectoryFiles).toHaveBeenCalledWith("mock-folder-path/");
         });
 
         it("should return the expected result", () => {
@@ -56,11 +56,12 @@ describe("formatOutput()", () => {
   });
 
   describe("when an invalid input is provided", () => {
-    const originalLog = console.log; // eslint-disable-line no-console
+    let originalLog;
     let files;
     let consoleLog;
 
     beforeEach(() => {
+      originalLog = console.log; // eslint-disable-line no-console
       consoleLog = jest.fn();
       console.log = consoleLog; // eslint-disable-line no-console
       files = formatOutput(123);

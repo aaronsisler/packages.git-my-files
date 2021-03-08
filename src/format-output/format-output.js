@@ -1,4 +1,4 @@
-import grabLooseFiles from "../grab-loose-files";
+import grabDirectoryFiles from "../grab-directory-files";
 
 const formatOutput = files => {
   let formattedOutput = [];
@@ -13,7 +13,7 @@ const formatOutput = files => {
       if (status === "??" && filename.slice(-1) !== "/") {
         formattedOutput.push({ filename, status: "A" });
       } else if (status === "??") {
-        const looseFiles = grabLooseFiles(filename);
+        const looseFiles = grabDirectoryFiles(filename);
 
         formattedOutput = formattedOutput.concat(...looseFiles);
       } else {
